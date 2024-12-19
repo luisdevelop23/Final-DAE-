@@ -4,10 +4,13 @@
  */
 package pe.com.clinicasanpablo.ClinicaSP.service;
 
+import pe.com.clinicasanpablo.ClinicaSP.dto.RecetaMedicaDTO;
+import pe.com.clinicasanpablo.ClinicaSP.service.generic.GenericoService;
+
 /**
  *
  * @author ADM
  */
-public interface RecetaMedicaService {
+public interface RecetaMedicaService extends GenericoService<RecetaMedicaDTO>{
     
 }
