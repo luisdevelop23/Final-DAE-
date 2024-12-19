@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Doctores</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <!-- Header -->
+    <header class="bg-white shadow">
+        <div class="container mx-auto flex justify-between items-center p-4">
+            <img src="https://www.sanpablo.com.pe/wp-content/uploads/2024/05/LogoSPSurco.png" alt="Clínica San Pablo" class="h-12">
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a href="#" class="text-gray-700 hover:text-blue-500">Inicio</a></li>
+                    <li><a href="#" class="text-gray-700 hover:text-blue-500">Nosotros</a></li>
+                    <li><a href="#" class="text-gray-700 hover:text-blue-500">Servicios</a></li>
+                    <li><a href="#" class="text-gray-700 hover:text-blue-500">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main class="container mx-auto py-8">
+        <section class="bg-white p-8 rounded shadow-md mx-auto ">
+            <h2 class="text-2xl font-semibold mb-4">Doctores Registrados</h2>
+            <table class="min-w-full bg-white">
+                <thead>
+                    <tr>
+                        <th class="py-2 px-4 border-b">ID</th>
+                        <th class="py-2 px-4 border-b">Nombre</th>
+                        <th class="py-2 px-4 border-b">Apellido Paterno</th>
+                        <th class="py-2 px-4 border-b">Apellido Materno</th>
+                        <th class="py-2 px-4 border-b">Especialidad</th>
+                        <th class="py-2 px-4 border-b">Correo</th>
+                        <th class="py-2 px-4 border-b">Teléfono</th>
+                        <th class="py-2 px-4 border-b">Estado</th>
+                        <th class="py-2 px-4 border-b">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="doctor : ${listadoctor}">
+                        <td class="py-2 px-4 border-b" th:text="${doctor.codDoctor}"></td>
+                        <td class="py-2 px-4 border-b" th:text="${doctor.nomDoctor}"></td>
+                        <td class="py-2 px-4 border-b" th:text="${doctor.apepDoctor}"></td>
+                        <td class="py-2 px-4 border-b" th:text="${doctor.apemDoctor}"></td>
+                        <td class="py-2 px-4 border-b" th:text="${doctor.especialidad.nomEspecialidad}"></td>
+                        <td class="py-2 px-4 border-b" th:text="${doctor.correoDoctor}"></td>
+                        <td class="py-2 px-4 border-b" th:text="${doctor.telefono}"></td>
+                        <td class="py-2 px-4 border-b" th:text="${doctor.estDoctor ? 'Activo' : 'Inactivo'}"></td>
+                        <td class="py-2 px-4 border-b">
+                            <a th:href="@{/doctor/actualiza/{id}(id=${doctor.codDoctor})}" class="text-blue-500 hover:underline">Editar</a>
+                            <a th:href="@{/doctor/eliminar/{id}(id=${doctor.codDoctor})}" class="text-red-500 hover:underline ml-2">Eliminar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto text-center">
+            <p>© 2024 Clínica San Pablo. Todos los derechos reservados.</p>
+            <div class="flex justify-center space-x-4 mt-4">
+                <a href="#" class="hover:text-blue-400">Facebook</a>
+                <a href="#" class="hover:text-blue-400">Instagram</a>
+                <a href="#" class="hover:text-blue-400">YouTube</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

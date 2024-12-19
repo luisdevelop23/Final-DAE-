@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Pacientes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <!-- Header -->
+    <header class="bg-white shadow">
+        <div class="container mx-auto flex justify-between items-center p-4">
+            <img src="https://www.sanpablo.com.pe/wp-content/uploads/2024/05/LogoSPSurco.png" alt="Clínica San Pablo" class="h-12">
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a href="#" class="text-gray-700 hover:text-blue-500">Inicio</a></li>
+                    <li><a href="#" class="text-gray-700 hover:text-blue-500">Nosotros</a></li>
+                    <li><a href="#" class="text-gray-700 hover:text-blue-500">Servicios</a></li>
+                    <li><a href="#" class="text-gray-700 hover:text-blue-500">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main class="container mx-auto py-8">
+        <section class="bg-white p-8 rounded shadow-md mx-auto sm:w-[440px] md:w-[500px] lg:w-[500px]">
+            <h2 class="text-2xl font-semibold mb-4">Pacientes Registrados</h2>
+            <table class="min-w-full bg-white">
+                <thead>
+                    <tr>
+                        <th class="py-2 px-4 border-b">ID</th>
+                        <th class="py-2 px-4 border-b">Nombre</th>
+                        <th class="py-2 px-4 border-b">Apellido Paterno</th>
+                        <th class="py-2 px-4 border-b">Apellido Materno</th>
+                        <th class="py-2 px-4 border-b">Fecha de Nacimiento</th>
+                        <th class="py-2 px-4 border-b">Género</th>
+                        <th class="py-2 px-4 border-b">Correo</th>
+                        <th class="py-2 px-4 border-b">Teléfono</th>
+                        <th class="py-2 px-4 border-b">Dirección</th>
+                        <th class="py-2 px-4 border-b">Estado</th>
+                        <th class="py-2 px-4 border-b">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="paciente : ${listapaciente}">
+                        <td class="py-2 px-4 border-b" th:text="${paciente.codPaciente}"></td>
+                        <td class="py-2 px-4 border-b" th:text="${paciente.nomPaciente}"></td>
+                        <td class="py-2 px-4 border-b" th:text="${paciente.apepPaciente}"></td>
+                        <td class="py-2 px-4 border-b" th:text="${paciente.apemPaciente}"></td>
+                        <td class="py-2 px-4 border-b" th:text="${#dates.format(paciente.fechaNacimiento, 'dd/MM/yyyy')}"></td>
+                        <td class="py-2 px-4 border-b" th:text="${paciente.genero}"></td>
+                        <td class="py-2 px-4 border-b" th:text="${paciente.correoPaciente}"></td>
+                        <td class="py-2 px-4 border-b" th:text="${paciente.telefono}"></td>
+                        <td class="py-2 px-4 border-b" th:text="${paciente.direccion}"></td>
+                        <td class="py-2 px-4 border-b" th:text="${paciente.estPaciente ? 'Activo' : 'Inactivo'}"></td>
+                        <td class="py-2 px-4 border-b">
+                            <a th:href="@{/paciente/actualiza/{id}(id=${paciente.codPaciente})}" class="text-blue-500 hover:underline">Editar</a>
+                            <a th:href="@{/paciente/eliminar/{id}(id=${paciente.codPaciente})}" class="text-red-500 hover:underline ml-2">Eliminar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto text-center">
+            <p>© 2024 Clínica San Pablo. Todos los derechos reservados.</p>
+            <div class="flex justify-center space-x-4 mt-4">
+                <a href="#" class="hover:text-blue-400">Facebook</a>
+                <a href="#" class="hover:text-blue-400">Instagram</a>
+                <a href="#" class="hover:text-blue-400">YouTube</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Citas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex flex-col h-[100vh] justify-between text-gray-800 ">
+    <!-- Header -->
+    <header class="bg-white shadow">
+        <div class="container mx-auto flex justify-between items-center p-4">
+            <img src="https://www.sanpablo.com.pe/wp-content/uploads/2024/05/LogoSPSurco.png" alt="Clínica San Pablo" class="h-12">
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a href="#" class="text-gray-700 hover:text-blue-500">Inicio</a></li>
+                    <li><a href="#" class="text-gray-700 hover:text-blue-500">Nosotros</a></li>
+                    <li><a href="#" class="text-gray-700 hover:text-blue-500">Servicios</a></li>
+                    <li><a href="#" class="text-gray-700 hover:text-blue-500">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main class="container mx-auto py-8">
+        <section class="bg-white p-8 rounded shadow-md mx-auto ">
+            <h2 class="text-2xl font-semibold mb-4">Citas Registradas</h2>
+            <table class="min-w-full bg-white">
+                <thead>
+                    <tr>
+                        <th class="py-2 px-4 border-b">ID</th>
+                        <th class="py-2 px-4 border-b">Paciente</th>
+                        <th class="py-2 px-4 border-b">Doctor</th>
+                        <th class="py-2 px-4 border-b">Fecha</th>
+                        <th class="py-2 px-4 border-b">Motivo</th>
+                        <th class="py-2 px-4 border-b">Estado</th>
+                        <th class="py-2 px-4 border-b">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="cita : ${listacita}">
+                        <td class="py-2 px-4 border-b" th:text="${cita.codCita}"></td>
+                        <td class="py-2 px-4 border-b" th:text="${cita.paciente.nombre}"></td>
+                        <td class="py-2 px-4 border-b" th:text="${cita.doctor.nombre}"></td>
+                        <td class="py-2 px-4 border-b" th:text="${#dates.format(cita.fechaCita, 'dd/MM/yyyy HH:mm')}"></td>
+                        <td class="py-2 px-4 border-b" th:text="${cita.motivoCita}"></td>
+                        <td class="py-2 px-4 border-b" th:text="${cita.estCita ? 'Activa' : 'Inactiva'}"></td>
+                        <td class="py-2 px-4 border-b">
+                            <a th:href="@{/cita/actualiza/{id}(id=${cita.codCita})}" class="text-blue-500 hover:underline">Editar</a>
+                            <a th:href="@{/cita/eliminar/{id}(id=${cita.codCita})}" class="text-red-500 hover:underline ml-2">Eliminar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto text-center">
+            <p>© 2024 Clínica San Pablo. Todos los derechos reservados.</p>
+            <div class="flex justify-center space-x-4 mt-4">
+                <a href="#" class="hover:text-blue-400">Facebook</a>
+                <a href="#" class="hover:text-blue-400">Instagram</a>
+                <a href="#" class="hover:text-blue-400">YouTube</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
