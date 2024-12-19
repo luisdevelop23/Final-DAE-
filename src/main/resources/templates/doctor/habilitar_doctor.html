@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <title>Habilitación de Doctores</title>
+
+</head>
+
+<body class="bg-gray-100 text-gray-800">
+
+    <main class="container mx-auto py-8">
+        <section class="bg-white p-8 rounded shadow-md">
+            <h2 class="text-2xl font-semibold mb-4">Habilitación de Doctores</h2>
+            <div class="table-responsive">
+                <table class="min-w-full bg-white">
+                    <thead>
+                        <tr>
+                            <th class="py-2 px-4 border-b">Código</th>
+                            <th class="py-2 px-4 border-b">Nombre</th>
+                            <th class="py-2 px-4 border-b">Especialidad</th>
+                            <th class="py-2 px-4 border-b">Estado</th>
+                            <th class="py-2 px-4 border-b">Habilitar</th>
+                            <th class="py-2 px-4 border-b">Deshabilitar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="doctor : ${listadoctor}">
+                            <td class="py-2 px-4 border-b" th:text="${doctor.codDoctor}"></td>
+                            <td class="py-2 px-4 border-b"
+                                th:text="${doctor.nomDoctor} + ' ' + ${doctor.apepDoctor} + ' ' + ${doctor.apemDoctor}">
+                            </td>
+                            <td class="py-2 px-4 border-b" th:text="${doctor.especialidad.nomEspecialidad}"></td>
+                            <td class="py-2 px-4 border-b"
+                                th:text="${doctor.estDoctor ? 'Habilitado' : 'Deshabilitado'}"></td>
+                            <td class="py-2 px-4 border-b">
+                                <a th:href="@{/doctor/habilitar/{id}(id=${doctor.codDoctor})}"
+                                    class="text-green-500 hover:underline">Habilitar</a>
+                            </td>
+                            <td class="py-2 px-4 border-b">
+                                <a th:href="@{/doctor/deshabilitar/{id}(id=${doctor.codDoctor})}"
+                                    class="text-red-500 hover:underline">Deshabilitar</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+    </main>
+
+</body>
+
+</html>
