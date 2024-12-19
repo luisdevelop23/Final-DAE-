@@ -4,10 +4,15 @@
  */
 package pe.com.clinicasanpablo.ClinicaSP.service;
 
+import pe.com.clinicasanpablo.ClinicaSP.dto.HistorialClinicoDTO;
+import pe.com.clinicasanpablo.ClinicaSP.service.generic.GenericoService;
+
 /**
  *
  * @author ADM
  */
-public interface HistorialClinicoService {
+public interface HistorialClinicoService extends GenericoService<HistorialClinicoDTO>{
+
+    
     
 }

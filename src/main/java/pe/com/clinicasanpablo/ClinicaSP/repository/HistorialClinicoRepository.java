@@ -4,10 +4,18 @@
  */
 package pe.com.clinicasanpablo.ClinicaSP.repository;
 
+import java.util.List;
+
+import pe.com.clinicasanpablo.ClinicaSP.entity.HistorialClinicoEntity;
+import pe.com.clinicasanpablo.ClinicaSP.repository.generic.GenericoRepositorio;
+
 /**
  *
  * @author ADM
  */
-public interface HistorialClinicoRepository {
+public interface HistorialClinicoRepository extends GenericoRepositorio<HistorialClinicoEntity, Long>{
+
+
+    
     
 }

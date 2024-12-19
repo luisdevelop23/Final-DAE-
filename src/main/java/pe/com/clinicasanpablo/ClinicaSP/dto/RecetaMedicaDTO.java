@@ -4,10 +4,25 @@
  */
 package pe.com.clinicasanpablo.ClinicaSP.dto;
 
-/**
- *
- * @author ADM
- */
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
+
+@SuperBuilder
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode(callSuper = false)
 public class RecetaMedicaDTO {
-    
+    private Long id;
+    private String nombrePaciente;
+    private String nombreMedico;
+    private String medicamento;
+    private String dosis;
+    private String frecuencia;
+    private String duracion;
+
+
 }
